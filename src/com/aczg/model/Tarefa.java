@@ -5,8 +5,7 @@ import com.aczg.model.enums.Status;
 
 import java.util.Date;
 
-public class Tarefa {
-    private int id;
+public class Tarefa extends Identificavel {
     private String nome;
     private String descricao;
     private Date dataDeTermino;
@@ -14,22 +13,13 @@ public class Tarefa {
     private Categoria categoria;
     private Status status;
 
-    public Tarefa(int id, String nome, String descricao, Date dataDeTermino, Prioridade prioridade, Categoria categoria, Status status) {
-        this.id = id;
+    public Tarefa(String nome, String descricao, Date dataDeTermino, Prioridade prioridade, Categoria categoria, Status status) {
         this.nome = nome;
         this.descricao = descricao;
         this.dataDeTermino = dataDeTermino;
         this.prioridade = prioridade;
         this.categoria = categoria;
         this.status = status;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -78,5 +68,18 @@ public class Tarefa {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Tarefa{" +
+                "id=" + super.getId() +
+                ", nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", dataDeTermino=" + dataDeTermino +
+                ", prioridade=" + prioridade +
+                ", categoria=" + categoria +
+                ", status=" + status +
+                '}';
     }
 }

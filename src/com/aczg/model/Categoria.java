@@ -1,11 +1,12 @@
 package com.aczg.model;
 
-public class Categoria {
-    int id;
-    String categoria;
+import java.util.Objects;
 
-    public Categoria(int id, String categoria) {
-        this.id = id;
+public class Categoria extends Identificavel {
+
+    private String categoria;
+
+    public Categoria(String categoria) {
         this.categoria = categoria;
     }
 
@@ -17,12 +18,22 @@ public class Categoria {
         this.categoria = categoria;
     }
 
-    public int getId() {
-        return id;
+    @Override
+    public String toString() {
+        return categoria;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Categoria categoria1 = (Categoria) o;
+        return Objects.equals(categoria, categoria1.categoria);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(categoria);
     }
 }
 
