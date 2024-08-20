@@ -5,7 +5,8 @@ import com.aczg.model.Tarefa;
 import com.aczg.model.enums.Status;
 import com.aczg.service.CategoriaService;
 import com.aczg.service.TarefaService;
-import com.aczg.utils.MyUtils;
+import com.aczg.utils.InputUtils;
+
 import com.aczg.utils.SortbyPrioridade;
 
 import java.util.*;
@@ -19,7 +20,7 @@ public class ListarTarefas {
         while (true) {
             printMenuDaSessao();
 
-            int opcaoSelecionada = MyUtils.getIntInput(0, 4, "Selecione a opção desejada com um número de 0 a 4", sc);
+            int opcaoSelecionada = InputUtils.getIntInput(0, 4, "Selecione a opção desejada com um número de 0 a 4", sc);
 
             switch (opcaoSelecionada) {
                 case 0:
@@ -95,7 +96,7 @@ public class ListarTarefas {
         System.out.println("0. Voltar");
         System.out.println("-------------------");
 
-        int opcaoSelecionada = MyUtils.getIntInput(0, 3, "Selecione a opção desejada:", sc);
+        int opcaoSelecionada = InputUtils.getIntInput(0, 3, "Selecione a opção desejada:", sc);
 
         switch (opcaoSelecionada) {
             case 0:
@@ -124,7 +125,7 @@ public class ListarTarefas {
         System.out.println("0. Voltar");
         System.out.println("-------------------");
 
-        int valorDePrioridade = MyUtils.getIntInput(0, 5, "Selecione a opção desejada:", sc);
+        int valorDePrioridade = InputUtils.getIntInput(0, 5, "Selecione a opção desejada:", sc);
 
         if (valorDePrioridade == 0) {
             return;
@@ -151,7 +152,7 @@ public class ListarTarefas {
         System.out.println("0. Voltar");
         System.out.println("-------------------");
 
-        int categoria = MyUtils.getIntInput(0, numeroDeCategorias.get(), "Selecione a opção desejada:", sc);
+        int categoria = InputUtils.getIntInput(0, numeroDeCategorias.get(), "Selecione a opção desejada:", sc);
 
         if (categoria == 0) {
             return;

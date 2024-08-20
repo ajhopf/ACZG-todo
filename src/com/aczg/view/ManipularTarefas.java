@@ -6,7 +6,9 @@ import com.aczg.model.enums.Prioridade;
 import com.aczg.model.enums.Status;
 import com.aczg.service.CategoriaService;
 import com.aczg.service.TarefaService;
+import com.aczg.utils.InputUtils;
 import com.aczg.utils.MyUtils;
+import jdk.internal.util.xml.impl.Input;
 
 import java.text.ParseException;
 import java.util.*;
@@ -51,13 +53,13 @@ public class ManipularTarefas {
                 .findFirst();
 
         if (tarefaSelecionada.isPresent()) {
-            editarTarefa(tarefaSelecionada.get(), sc);
+            efetuarEdicaoDeCampoEmTarefa(tarefaSelecionada.get(), sc);
         } else {
             System.out.println("Não foi possível selecionar uma tarefa com o ID informado. Tente novamente");
         }
     }
 
-    private static void editarTarefa(Tarefa tarefaAntiga, Scanner sc) {
+    private static void efetuarEdicaoDeCampoEmTarefa(Tarefa tarefaAntiga, Scanner sc) {
         MyUtils.criarCabecalhoDeSessao("Atualizar Tarefa: ");
 
         MyUtils.printTarefa(tarefaAntiga);
@@ -67,38 +69,44 @@ public class ManipularTarefas {
         System.out.println("1. Nome");
         System.out.println("2. Descrição");
         System.out.println("3. Data de Término");
-        System.out.println("4. Categoria");
-        System.out.println("5. Status");
+        System.out.println("4. Prioridade");
+        System.out.println("5. Categoria");
+        System.out.println("6. Status");
         System.out.println("0. Cancelar");
         System.out.println("-------------------");
 
-        int opcao = MyUtils.getIntInput(0, 5, "Digite a opção desejada", sc);
+        int opcao = InputUtils.getIntInput(0, 6, "Digite a opção desejada", sc);
         Tarefa tarefaAtualizada = new Tarefa(tarefaAntiga);
 
         switch (opcao) {
             case 1:
                 System.out.println("Atualizando nome da tarefa: " + tarefaAntiga.getNome());
-                String novoNome = obterString("Digite o novo nome para a tarefa: ", sc);
+                String novoNome = InputUtils.obterString("Digite o novo nome para a tarefa: ", sc);
                 tarefaAtualizada.setNome(novoNome);
                 break;
             case 2:
                 System.out.println("Atualizando descrição da tarefa: " + tarefaAntiga.getNome());
-                String novaDescricao = obterString("Digite a nova descrição para a tarefa: ", sc);
+                String novaDescricao = InputUtils.obterString("Digite a nova descrição para a tarefa: ", sc);
                 tarefaAtualizada.setDescricao(novaDescricao);
                 break;
             case 3:
                 System.out.println("Atualizando data de término da tarefa: " + tarefaAntiga.getNome());
-                Date novaData = obterData("Digite a nova data de término para a tarefa: ", sc);
+                Date novaData = InputUtils.obterData("Digite a nova data de término para a tarefa: ", sc);
                 tarefaAtualizada.setDataDeTermino(novaData);
                 break;
             case 4:
-                System.out.println("Atualizando a categoria da tarefa: " + tarefaAntiga.getNome());
-                Categoria novaCategoria = obterCategoria("Digite a nova categoria da tarefa:", sc);
-                tarefaAtualizada.setCategoria(novaCategoria);
+                System.out.println("Atualizando a prioridade da tarefa: " + tarefaAntiga.getNome());
+                Prioridade novaPrioridade = InputUtils.obterPrioridade("Digite a nova prioridade da tarefa\nMenor Prioridade = 1 / Maior Prioridade = 5", sc);
+                tarefaAtualizada.setPrioridade(novaPrioridade);
                 break;
             case 5:
+                System.out.println("Atualizando a categoria da tarefa: " + tarefaAntiga.getNome());
+                Categoria novaCategoria = InputUtils.obterCategoria("Digite a nova categoria da tarefa:", sc);
+                tarefaAtualizada.setCategoria(novaCategoria);
+                break;
+            case 6:
                 System.out.println("Atualizando o status da tarefa: " + tarefaAntiga.getNome());
-                Status novoStatus = obterStatus("Digite o novo status da tarefa\n1 = TODO; 2 = DOING; 3 = DONE", sc);
+                Status novoStatus = InputUtils.obterStatus("Digite o novo status da tarefa\n1 = TODO; 2 = DOING; 3 = DONE", sc);
                 tarefaAtualizada.setStatus(novoStatus);
                 break;
             default:
@@ -133,7 +141,7 @@ public class ManipularTarefas {
         int idSelecionado = 0;
 
         while (!validIdSelected) {
-            idSelecionado = MyUtils.getIntInput(-1, maiorId, "Selecione a opção desejada com um número de " + menorId+ " a " + maiorId + ". Ou digite -1 para cancelar", sc);
+            idSelecionado = InputUtils.getIntInput(-1, maiorId, "Selecione a opção desejada com um número de " + menorId+ " a " + maiorId + ". Ou digite -1 para cancelar", sc);
 
             if (idSelecionado == -1 ) {
                 return -1;
@@ -155,86 +163,14 @@ public class ManipularTarefas {
     public static void adicionarTarefa(Scanner sc) {
         MyUtils.criarCabecalhoDeSessao("Criar nova Tarefa");
 
-        String nome = obterString("Digite o nome da tarefa", sc);
-        String descricao = obterString("Digite a descricao da tarefa:", sc);
-        Categoria categoria = obterCategoria("Digite a categoria da tarefa:", sc);
-        Date dataDeTermino = obterData("Digite a data para conclusão da tarefa:", sc);
-        Status status = obterStatus("Digite o status da tarefa\n1 = TODO; 2 = DOING; 3 = DONE", sc);
-        Prioridade prioridade = obterPrioridade(sc);
+        String nome = InputUtils.obterString("Digite o nome da tarefa", sc);
+        String descricao = InputUtils.obterString("Digite a descricao da tarefa:", sc);
+        Categoria categoria = InputUtils.obterCategoria("Digite a categoria da tarefa:", sc);
+        Date dataDeTermino = InputUtils.obterData("Digite a data para conclusão da tarefa:", sc);
+        Status status = InputUtils.obterStatus("Digite o status da tarefa\n1 = TODO; 2 = DOING; 3 = DONE", sc);
+        Prioridade prioridade = InputUtils.obterPrioridade("Digite a prioridade da tarefa\nMenor Prioridade = 1 / Maior Prioridade = 5", sc);
 
         TarefaService.criarTarefa(nome, descricao, dataDeTermino, prioridade, categoria, status);
-    }
-
-    private static String obterString(String title, Scanner sc) {
-        System.out.println(title);
-        return sc.nextLine();
-    }
-
-
-    private static Status obterStatus(String title, Scanner sc) {
-        int status = MyUtils.getIntInput(1, 3, title , sc);
-
-        switch (status) {
-            case 1:
-                return Status.TODO;
-            case 2:
-                return Status.DOING;
-            default:
-                return Status.DONE;
-        }
-    }
-
-    private static Categoria obterCategoria(String title, Scanner sc) {
-        Categoria categoria;
-
-        System.out.println(title);
-        String nomeDaCategoria = sc.nextLine();
-
-        if (!CategoriaService.categoriaExiste(nomeDaCategoria)) {
-            categoria = CategoriaService.criarCategoria(nomeDaCategoria);
-        } else {
-            categoria = CategoriaService.buscarCategoriaPeloNome(nomeDaCategoria);
-        }
-
-        return categoria;
-    }
-
-    private static Date obterData(String title, Scanner sc) {
-        boolean inputIncorreto = true;
-        Date data = null;
-
-        while(inputIncorreto) {
-            System.out.println(title);
-            try {
-                String dataDeTermino = sc.nextLine();
-                data = MyUtils.parseDate(dataDeTermino);
-                inputIncorreto = false;
-            } catch (ParseException e) {
-                System.out.println(e.getMessage());
-                System.out.println("Informe uma data válida no formato: dd/MM/yyyy");
-            }
-        }
-
-        return data;
-    }
-
-
-    private static Prioridade obterPrioridade(Scanner sc) {
-        int prioridade = MyUtils.getIntInput(1, 5, "Digite a prioridade da tarefa\nMenor Prioridade = 1 / Maior Prioridade = 5", sc);
-
-        switch (prioridade) {
-            case 1:
-                return Prioridade.MUITO_BAIXA;
-            case 2:
-                return Prioridade.BAIXA;
-            case 3:
-                return Prioridade.MEDIA;
-            case 4:
-                return Prioridade.ALTA;
-            default:
-                return Prioridade.MUITO_ALTA;
-        }
-
     }
 
 }

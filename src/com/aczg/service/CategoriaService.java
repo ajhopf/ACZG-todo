@@ -1,12 +1,15 @@
 package com.aczg.service;
 
 import com.aczg.model.Categoria;
+import com.aczg.model.Tarefa;
 import com.aczg.repository.CategoriaRepository;
+import com.aczg.repository.TarefaRepository;
 import com.aczg.utils.MyUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class CategoriaService {
     public static Categoria criarCategoria(String nome) {
@@ -28,6 +31,36 @@ public class CategoriaService {
         List<Categoria> categorias = CategoriaRepository.getCategorias();
         Categoria categoria = new Categoria(nomeDaCategoria);
         return categorias.contains(categoria);
+    }
+
+    public static Categoria buscarCategoriaPeloId(int id) {
+        return CategoriaRepository
+                .getCategorias()
+                .stream()
+                .filter(categoria -> categoria.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public static void removerCategoria(int id) {
+        Optional<Categoria> categoria = CategoriaRepository
+                .getCategorias()
+                .stream()
+                .filter(c -> c.getId() == id)
+                .findFirst();
+
+        if (categoria.isPresent()) {
+            List<Tarefa> tarefasComACategoria = TarefaService.filtrarTarefas(t -> t.getCategoria() == categoria.get());
+
+            if (tarefasComACategoria.size() > 0) {
+                System.out.println("Você possui tarefas com a categoria que você deseja deletar!");
+                System.out.println("Antes de fazer isso, atualize suas tarefas com outras categorias.");
+                System.out.println("Categoria " + categoria.get() + " não deletada.");
+            } else {
+                CategoriaRepository.removerCategoria(categoria.get());
+                System.out.println("Categoria " + categoria.get() + " deletada.");
+            }
+        }
     }
 
     public static Categoria buscarCategoriaPeloNome(String nome) {
