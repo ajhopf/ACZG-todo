@@ -22,6 +22,16 @@ public class Tarefa extends Identificavel {
         this.status = status;
     }
 
+    public Tarefa(Tarefa tarefa) {
+       this.nome = tarefa.getNome();
+       this.descricao = tarefa.getDescricao();
+       this.dataDeTermino = tarefa.getDataDeTermino();
+       this.prioridade = tarefa.getPrioridade();
+       this.categoria = tarefa.getCategoria();
+       this.status = tarefa.getStatus();
+       super.setId(tarefa.getId());
+    }
+
     public String getNome() {
         return nome;
     }

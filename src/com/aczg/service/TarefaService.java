@@ -33,6 +33,10 @@ public class TarefaService {
         return MyUtils.gerarNovoId(tarefas);
     }
 
+    public static void atualizarTarefa(Tarefa novaTarefa) {
+        TarefaRepository.atualizarTarefa(novaTarefa.getId(), novaTarefa);
+    }
+
     public static void removerTarefa(Tarefa tarefa) {
         TarefaRepository.removerTarefa(tarefa);
     }
