@@ -8,8 +8,10 @@ import com.aczg.repository.TarefaRepository;
 import com.aczg.utils.MyUtils;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class TarefaService {
     public static List<Tarefa> getTarefas() {
@@ -35,5 +37,18 @@ public class TarefaService {
         File tarefasFile = MyFileWriter.getOrCreateFile("tarefas.txt");
         List<Tarefa> tarefas = TarefaRepository.getTarefas();
         MyFileWriter.writeToFile(tarefas, tarefasFile);
+    }
+
+    public static List<Tarefa> filtrarTarefas(Predicate<Tarefa> condition) {
+        List<Tarefa> tarefas = TarefaRepository.getTarefas();
+        List<Tarefa> tarefasFiltradas = new ArrayList<>();
+
+        for (Tarefa tarefa : tarefas) {
+            if (condition.test(tarefa)) {
+                tarefasFiltradas.add(tarefa);
+            }
+        }
+
+        return tarefasFiltradas;
     }
 }
