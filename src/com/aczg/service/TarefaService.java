@@ -33,6 +33,10 @@ public class TarefaService {
         return MyUtils.gerarNovoId(tarefas);
     }
 
+    public static void removerTarefa(Tarefa tarefa) {
+        TarefaRepository.removerTarefa(tarefa);
+    }
+
     public static void salvarTarefas() {
         File tarefasFile = MyFileWriter.getOrCreateFile("tarefas.txt");
         List<Tarefa> tarefas = TarefaRepository.getTarefas();

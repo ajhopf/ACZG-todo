@@ -8,10 +8,11 @@ import com.aczg.service.TarefaService;
 import com.aczg.utils.MyUtils;
 import com.aczg.utils.SortbyPrioridade;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
+
+import static com.aczg.utils.MyUtils.printTarefa;
 
 public class ListarTarefas {
     public static void listarTarefas(Scanner sc) {
@@ -145,17 +146,5 @@ public class ListarTarefas {
         filtrarTarefas((t) -> t.getCategoria() == categorias.get(categoria-1));
     }
 
-    private static void printTarefa(Tarefa tarefa) {
-        MyUtils.criarCabecalhoDeSessao(tarefa.getNome());
 
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        String data = formatter.format(tarefa.getDataDeTermino());
-
-        System.out.println("Id: " + tarefa.getId());
-        System.out.println("Descrição: " + tarefa.getDescricao());
-        System.out.println("Data de Término: " + data);
-        System.out.println("Prioridade: " + tarefa.getPrioridade());
-        System.out.println("Categoria: " + tarefa.getCategoria());
-        System.out.println("Status: " + tarefa.getStatus());
-    }
 }

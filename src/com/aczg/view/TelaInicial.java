@@ -1,9 +1,7 @@
 package com.aczg.view;
 
-import com.aczg.exceptions.OpcaoInvalidaException;
 import com.aczg.utils.MyUtils;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TelaInicial {
@@ -14,7 +12,7 @@ public class TelaInicial {
 
             gerarMenuInicial();
 
-            int opcaoSelecionada = MyUtils.getIntInput(0, 2, "Selecione a opção desejada: ", sc);
+            int opcaoSelecionada = MyUtils.getIntInput(0, 3, "Selecione a opção desejada: ", sc);
 
             switch (opcaoSelecionada) {
                 case 0:
@@ -24,7 +22,10 @@ public class TelaInicial {
                     ListarTarefas.listarTarefas(sc);
                     break;
                 case 2:
-                    AdicionarTarefas.adicionarTarefa(sc);
+                    ManipularTarefas.adicionarTarefa(sc);
+                    break;
+                case 3:
+                    ManipularTarefas.deletarTarefa(sc);
                     break;
                 default: System.out.println("Você escolheu a opção " + opcaoSelecionada);
             }
@@ -39,6 +40,7 @@ public class TelaInicial {
         System.out.println("Selecione uma das opções abaixo:");
         System.out.println("1. Listar Tarefas");
         System.out.println("2. Adicionar nova Tarefa");
+        System.out.println("3. Deletar Tarefa");
         System.out.println("0. Sair do Sistema");
         System.out.println("-------------------");
     }
