@@ -15,7 +15,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-public class TelaTarefas {
+public class AdicionarTarefas {
     public static void adicionarTarefa(Scanner sc) {
         MyUtils.criarCabecalhoDeSessao("Criar nova Tarefa");
 
@@ -33,35 +33,8 @@ public class TelaTarefas {
         sc.nextLine();
     }
 
-    private static int getIntInput(int min, int max, String title, Scanner sc) {
-        boolean inputIncorreto = true;
-        int result = 1;
-
-        System.out.println(title);
-        try {
-            int value = sc.nextInt();
-            if (value < min || value > max) {
-                throw new OpcaoInvalidaException("Escolha um número entre " + min + " e " + max);
-            }
-            inputIncorreto = false;
-            result = value;
-        } catch (OpcaoInvalidaException e) {
-            System.out.println(e.getMessage());
-            sc.nextLine();
-        } catch (InputMismatchException e) {
-            System.out.println("Você deve escolher utilizando um número de " + min + " a " + max);
-            sc.nextLine();
-        } finally {
-            if (inputIncorreto) {
-                getIntInput(min, max, title, sc);
-            }
-        }
-
-        return result;
-    }
-
     private static Status obterStatus(Scanner sc) {
-        int status = getIntInput(1, 3, "Digite o status da tarefa\n1 = TODO; 2 = DOING; 3 = DONE", sc);
+        int status = MyUtils.getIntInput(1, 3, "Digite o status da tarefa\n1 = TODO; 2 = DOING; 3 = DONE", sc);
 
         switch (status) {
             case 1:
@@ -108,7 +81,7 @@ public class TelaTarefas {
     }
 
     private static Prioridade obterPrioridade(Scanner sc) {
-        int prioridade = getIntInput(1, 5, "Digite a prioridade da tarefa\nMenor Prioridade = 1 / Maior Prioridade = 5", sc);
+        int prioridade = MyUtils.getIntInput(1, 5, "Digite a prioridade da tarefa\nMenor Prioridade = 1 / Maior Prioridade = 5", sc);
 
         switch (prioridade) {
             case 1:
@@ -125,21 +98,4 @@ public class TelaTarefas {
 
     }
 
-    public static void listarTarefas() {
-        List<Tarefa> tarefas = TarefaService.getTarefas();
-
-        System.out.println("Listagem de Todas as Tarefas por ordem de Inserção: ");
-
-        tarefas.forEach(tarefa -> printTarefa(tarefa));
-    }
-
-    private static void printTarefa(Tarefa tarefa) {
-        MyUtils.criarCabecalhoDeSessao(tarefa.getNome());
-        System.out.println("Id: " + tarefa.getId());
-        System.out.println("Descrição: " + tarefa.getDescricao());
-        System.out.println("Data de Término: " + tarefa.getDataDeTermino());
-        System.out.println("Prioridade: " + tarefa.getPrioridade());
-        System.out.println("Categoria: " + tarefa.getCategoria());
-        System.out.println("Status: " + tarefa.getStatus());
-    }
 }

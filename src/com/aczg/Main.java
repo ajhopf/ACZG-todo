@@ -16,6 +16,9 @@ import java.text.ParseException;
 public class Main {
     public static void main(String[] args) throws ParseException {
         Categoria aczg = CategoriaService.criarCategoria("ACZG");
+        TarefaService.criarTarefa("Curso Java", "Ver o curso de Java", MyUtils.parseDate("18/08/2024"), Prioridade.BAIXA, aczg, Status.DONE);
+        TarefaService.criarTarefa("Curso Java", "Ver o curso de Java", MyUtils.parseDate("18/08/2024"), Prioridade.MUITO_ALTA, aczg, Status.DONE);
+        TarefaService.criarTarefa("Curso Java", "Ver o curso de Java", MyUtils.parseDate("18/08/2024"), Prioridade.MEDIA, aczg, Status.DONE);
         TarefaService.criarTarefa("Curso Java", "Ver o curso de Java", MyUtils.parseDate("18/08/2024"), Prioridade.ALTA, aczg, Status.DONE);
         TarefaService.criarTarefa("Todos", "Finalizar projeto de todos", MyUtils.parseDate("19/08/2024"), Prioridade.MUITO_ALTA, aczg, Status.DOING);
         TelaInicial.iniciar();
