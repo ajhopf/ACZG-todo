@@ -19,7 +19,7 @@ public class ListarTarefas {
         while (true) {
             printMenuDaSessao();
 
-            int opcaoSelecionada = MyUtils.getIntInput(0, 4, "Selecione a opção desejada com um número de 0 a 3", sc);
+            int opcaoSelecionada = MyUtils.getIntInput(0, 4, "Selecione a opção desejada com um número de 0 a 4", sc);
 
             switch (opcaoSelecionada) {
                 case 0:
@@ -39,6 +39,20 @@ public class ListarTarefas {
                 default: System.out.println("Você escolheu a opção " + opcaoSelecionada);
             }
         }
+    }
+
+    public static void listarEstatisticas() {
+        int tarefasTodo = TarefaService.filtrarTarefas((t) -> t.getStatus() == Status.TODO).size();
+        int tarefasDoing = TarefaService.filtrarTarefas((t) -> t.getStatus() == Status.DOING).size();
+        int tarefasDone = TarefaService.filtrarTarefas((t) -> t.getStatus() == Status.DONE).size();
+
+        System.out.println("----------------------------------------");
+        System.out.println("Estatísticas");
+        System.out.println();
+        System.out.println("Tarefas a Fazer (TODO): " + tarefasTodo);
+        System.out.println("Tarefas em Progresso (DOING): " + tarefasDoing);
+        System.out.println("Tarefas Finalizadas (DONE): " + tarefasDone);
+        System.out.println("-------------------");
     }
 
     private static void printMenuDaSessao() {

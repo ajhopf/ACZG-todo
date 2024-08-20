@@ -65,7 +65,6 @@ public class ManipularTarefas {
         } else {
             System.out.println("Não foi possível selecionar uma tarefa com o ID informado. Tente novamente");
         }
-
     }
 
     public static void adicionarTarefa(Scanner sc) {
