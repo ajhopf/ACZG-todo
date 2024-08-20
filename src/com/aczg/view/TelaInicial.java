@@ -1,7 +1,8 @@
 package com.aczg.view;
 
+import com.aczg.service.CategoriaService;
+import com.aczg.service.TarefaService;
 import com.aczg.utils.InputUtils;
-import com.aczg.utils.MyUtils;
 
 import java.util.Scanner;
 
@@ -17,6 +18,7 @@ public class TelaInicial {
             switch (opcaoSelecionada) {
                 case 0:
                     System.out.println("Até logo!");
+                    TarefaService.salvarTarefas();
                     return;
                 case 1:
                     ListarTarefas.listarTarefas(sc);

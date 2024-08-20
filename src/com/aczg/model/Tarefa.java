@@ -5,7 +5,7 @@ import com.aczg.model.enums.Status;
 
 import java.util.Date;
 
-public class Tarefa extends Identificavel implements Comparable<Tarefa> {
+public class Tarefa extends Identificavel implements Comparable<Tarefa>{
     private String nome;
     private String descricao;
     private Date dataDeTermino;
@@ -78,6 +78,10 @@ public class Tarefa extends Identificavel implements Comparable<Tarefa> {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public String save() {
+        return nome + ";" + descricao + ";" + dataDeTermino + ";" + prioridade + ";" + categoria + ";" + status;
     }
 
     @Override

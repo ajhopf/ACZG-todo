@@ -5,6 +5,7 @@ import com.aczg.model.Tarefa;
 import com.aczg.model.enums.Prioridade;
 import com.aczg.model.enums.Status;
 import com.aczg.repository.TarefaRepository;
+import com.aczg.utils.MyFileWriter;
 import com.aczg.utils.MyUtils;
 
 import java.io.File;
@@ -24,7 +25,7 @@ public class TarefaService {
         tarefa.setId(gerarIdParaNovaTarefa());
         TarefaRepository.adicionarTarefa(tarefa);
         System.out.println("----------------------------------------");
-        System.out.println("Tarefa criada com sucesso!");
+        System.out.println("Tarefa criada com sucesso! Nome: " + tarefa.getNome());
         return tarefa;
     }
 
@@ -42,9 +43,9 @@ public class TarefaService {
     }
 
     public static void salvarTarefas() {
-        File tarefasFile = MyFileWriter.getOrCreateFile("tarefas.txt");
+        File tarefasFile = MyFileWriter.buscarOuCriarArquivo("tarefas.txt");
         List<Tarefa> tarefas = TarefaRepository.getTarefas();
-        MyFileWriter.writeToFile(tarefas, tarefasFile);
+        MyFileWriter.salvarNoArquivo(tarefas, tarefasFile);
     }
 
     public static List<Tarefa> filtrarTarefas(Predicate<Tarefa> condition) {

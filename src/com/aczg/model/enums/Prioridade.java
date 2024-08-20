@@ -3,7 +3,7 @@ package com.aczg.model.enums;
 public enum Prioridade {
     MUITO_BAIXA(1, "Muito Baixa") ,
     BAIXA(2, "Baixa") ,
-    MEDIA(3, "Média") ,
+    MEDIA(3, "Media") ,
     ALTA(4, "Alta"),
     MUITO_ALTA(5, "Muito Alta"),;
 
@@ -17,6 +17,9 @@ public enum Prioridade {
 
     public int getValor() {
         return valor;
+    }
+    public String getDescricao() {
+        return descricao;
     }
 
     @Override public String toString() {

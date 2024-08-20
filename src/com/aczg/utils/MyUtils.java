@@ -29,8 +29,9 @@ public class MyUtils {
         System.out.println("Descrição: " + tarefa.getDescricao());
         System.out.println("Data de Término: " + data);
         System.out.println("Prioridade: " + tarefa.getPrioridade());
-        System.out.println("Categoria: " + tarefa.getCategoria());
+        System.out.println("Categoria: " + tarefa.getCategoria().getCategoria());
         System.out.println("Status: " + tarefa.getStatus());
+        System.out.println(" ");
     }
 
     public static void criarCabecalhoDeSessao(String title) {
@@ -51,8 +52,16 @@ public class MyUtils {
     public static <T extends Identificavel> int gerarNovoId(List<T> list) {
         int newId;
         if (list.size() > 0) {
-            int lastId = list.get(list.size() - 1).getId();
-            newId = lastId + 1;
+            int maiorId = 0;
+
+            for (int i = 0; i < list.size(); i++) {
+                T t = list.get(i);
+                if (t.getId() > maiorId) {
+                    maiorId = t.getId();
+                }
+            }
+
+            newId = maiorId + 1;
         } else {
             newId = 0;
         }

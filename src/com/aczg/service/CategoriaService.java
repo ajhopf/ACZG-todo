@@ -3,10 +3,8 @@ package com.aczg.service;
 import com.aczg.model.Categoria;
 import com.aczg.model.Tarefa;
 import com.aczg.repository.CategoriaRepository;
-import com.aczg.repository.TarefaRepository;
 import com.aczg.utils.MyUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,8 +15,8 @@ public class CategoriaService {
         categoria.setId(gerarIdParaNovaCategoria());
 
         CategoriaRepository.adicionarCategoria(categoria);
-        System.out.println("Nova categoria criada: " + categoria);
-
+        System.out.println("----------------------------------------");
+        System.out.println("Nova categoria criada: " + categoria.getCategoria());
         return categoria;
     }
 
@@ -31,15 +29,6 @@ public class CategoriaService {
         List<Categoria> categorias = CategoriaRepository.getCategorias();
         Categoria categoria = new Categoria(nomeDaCategoria);
         return categorias.contains(categoria);
-    }
-
-    public static Categoria buscarCategoriaPeloId(int id) {
-        return CategoriaRepository
-                .getCategorias()
-                .stream()
-                .filter(categoria -> categoria.getId() == id)
-                .findFirst()
-                .orElse(null);
     }
 
     public static void removerCategoria(int id) {
