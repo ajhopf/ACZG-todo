@@ -1,8 +1,6 @@
 package com.aczg.repository;
 
 import com.aczg.model.Categoria;
-import com.aczg.model.Tarefa;
-import com.aczg.utils.MyUtils;
 
 import java.util.ArrayList;
 import java.util.List;

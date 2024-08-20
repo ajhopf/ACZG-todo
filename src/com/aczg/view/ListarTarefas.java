@@ -7,12 +7,12 @@ import com.aczg.service.CategoriaService;
 import com.aczg.service.TarefaService;
 import com.aczg.utils.InputUtils;
 
-import com.aczg.utils.SortbyPrioridade;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 
+import static com.aczg.utils.MyUtils.dateToString;
 import static com.aczg.utils.MyUtils.printTarefa;
 
 public class ListarTarefas {
@@ -26,7 +26,7 @@ public class ListarTarefas {
                 case 0:
                     return;
                 case 1:
-                    listarTodasTarefasSortedPorPrioridade();
+                    listarTodasTarefas(sc);
                     break;
                 case 2:
                     listarTarefasPorPrioridade(sc);
@@ -61,7 +61,7 @@ public class ListarTarefas {
         System.out.println("Lista de Tarefas");
         System.out.println();
         System.out.println("Selecione uma das opções abaixo:");
-        System.out.println("1. Listar Todas Tarefas por ordem de prioridade");
+        System.out.println("1. Listar Todas Tarefas");
         System.out.println("2. Listar Tarefas por prioridade");
         System.out.println("3. Listar Tarefas por Status");
         System.out.println("4. Listar Tarefas por Categoria");
@@ -75,14 +75,59 @@ public class ListarTarefas {
         tarefasFiltradas.forEach(tarefa -> printTarefa(tarefa));
     }
 
-    private static List<Tarefa> listarTodasTarefasSortedPorPrioridade() {
+    private static void listarTodasTarefas(Scanner sc) {
         List<Tarefa> tarefas = new ArrayList<>(TarefaService.getTarefas());
 
-        tarefas.sort(new SortbyPrioridade());
+        System.out.println("----------------------------------------");
+        System.out.println("Você deseja filtrar as tarefas por data?");
+        System.out.println();
+        System.out.println("Selecione uma das opções abaixo:");
+        System.out.println("1. Sim");
+        System.out.println("2. Não");
+        System.out.println("-------------------");
 
-        tarefas.forEach(tarefa -> printTarefa(tarefa));
+        int opcaoSelecionada = InputUtils.getIntInput(1, 2, "Selecione a opção desejada:", sc);
 
-        return tarefas;
+        switch (opcaoSelecionada) {
+            case 1:
+                filtrarPorData(tarefas, sc);
+                break;
+            case 2:
+                tarefas.forEach(tarefa -> printTarefa(tarefa));
+                break;
+        }
+    }
+
+    public static void filtrarPorData(List<Tarefa> tarefas, Scanner sc) {
+        System.out.println("----------------------------------------");
+        System.out.println("Como você deseja realizar o filtro");
+        System.out.println();
+        System.out.println("Selecione uma das opções abaixo:");
+        System.out.println("1. Selecionar apenas tarefas com data de término idêntica a data que eu indicar");
+        System.out.println("2. Selecionar tarefas que tenham data de término após a data que eu indicar");
+        System.out.println("-------------------");
+
+        int opcaoSelecionada = InputUtils.getIntInput(1, 2, "Selecione a opção desejada:", sc);
+        Date data = InputUtils.obterData("Digite a data: ", sc);
+
+        switch (opcaoSelecionada) {
+            case 1:
+                List<Tarefa> tarefasFiltradas = TarefaService.filtrarTarefas(t -> t.getDataDeTermino().compareTo(data) == 0);
+                if(tarefasFiltradas.isEmpty()) {
+                    System.out.println("Você não possui tarefas cadastradas para o dia " + dateToString(data));
+                } else {
+                    tarefasFiltradas.forEach(t -> printTarefa(t));
+                }
+                break;
+            default:
+                List<Tarefa> tarefasFiltradas2 = TarefaService.filtrarTarefas(t -> t.getDataDeTermino().compareTo(data) > 0);
+                if(tarefasFiltradas2.isEmpty()) {
+                    System.out.println("Você não possui tarefas cadastradas para depois do dia " + dateToString(data));
+                } else {
+                    tarefasFiltradas2.forEach(t -> printTarefa(t));
+                }
+                break;
+        }
     }
 
     public static void listarTarefasPorStatus(Scanner sc) {

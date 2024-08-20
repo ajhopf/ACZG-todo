@@ -21,10 +21,9 @@ public class MyUtils {
     }
 
     public static void printTarefa(Tarefa tarefa) {
-        MyUtils.criarCabecalhoDeSessao(tarefa.getNome());
+        MyUtils.criarCabecalhoDeSessao("Nome: " + tarefa.getNome());
 
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        String data = formatter.format(tarefa.getDataDeTermino());
+        String data = dateToString(tarefa.getDataDeTermino());
 
         System.out.println("Id: " + tarefa.getId());
         System.out.println("Descrição: " + tarefa.getDescricao());
@@ -42,6 +41,11 @@ public class MyUtils {
 
     public static Date parseDate(String date) throws ParseException {
         return new SimpleDateFormat("dd/MM/yyyy").parse(date);
+    }
+
+    public static String dateToString(Date date) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        return formatter.format(date);
     }
 
     public static <T extends Identificavel> int gerarNovoId(List<T> list) {

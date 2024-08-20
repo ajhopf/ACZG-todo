@@ -5,7 +5,7 @@ import com.aczg.model.enums.Status;
 
 import java.util.Date;
 
-public class Tarefa extends Identificavel {
+public class Tarefa extends Identificavel implements Comparable<Tarefa> {
     private String nome;
     private String descricao;
     private Date dataDeTermino;
@@ -91,5 +91,10 @@ public class Tarefa extends Identificavel {
                 ", categoria=" + categoria +
                 ", status=" + status +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Tarefa t) {
+        return Integer.compare(t.getPrioridade().getValor(), this.prioridade.getValor());
     }
 }
