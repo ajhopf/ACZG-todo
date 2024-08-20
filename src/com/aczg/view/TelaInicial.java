@@ -1,6 +1,5 @@
 package com.aczg.view;
 
-import com.aczg.service.CategoriaService;
 import com.aczg.service.TarefaService;
 import com.aczg.utils.InputUtils;
 

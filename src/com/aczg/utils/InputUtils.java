@@ -35,12 +35,10 @@ public class InputUtils {
         }
     }
 
-
     public static String obterString(String title, Scanner sc) {
         System.out.println(title);
         return sc.nextLine();
     }
-
 
     public static Status obterStatus(String title, Scanner sc) {
         int status = getIntInput(1, 3, title , sc);
@@ -106,5 +104,4 @@ public class InputUtils {
         }
 
     }
-
 }

@@ -15,7 +15,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-
 public class MyFileWriter {
     static public File buscarOuCriarArquivo(String fileName) {
         try {
@@ -39,9 +38,9 @@ public class MyFileWriter {
             System.out.println("O arquivo foi salvo com sucesso.");
         } catch (IOException e) {
             System.out.println("Ocorreu um erro ao gravar as tarefas no arquivo.");
-            e.printStackTrace();
         }
     }
+
     static public List<Tarefa> carregarTarefas(File file) {
         List<Tarefa> tarefas = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -76,5 +75,4 @@ public class MyFileWriter {
         }
         return tarefas;
     }
-
 }

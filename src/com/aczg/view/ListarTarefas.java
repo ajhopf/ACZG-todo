@@ -205,6 +205,4 @@ public class ListarTarefas {
 
         filtrarTarefas((t) -> t.getCategoria() == categorias.get(categoria-1));
     }
-
-
 }
