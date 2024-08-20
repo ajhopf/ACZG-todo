@@ -1,0 +1,4 @@
+TODO list;Desenvolver o programa TODO list em Java.;Tue Aug 20 00:00:00 BRT 2024;Muito Alta;JAVA;DOING
+Curso Groove;Iniciar trilha de Groove no ACZG;Mon Aug 26 00:00:00 BRT 2024;Muito Alta;GROOVE;TODO
+Curso Java;Finalizar curso de JAVA na Udemy;Sun Aug 18 00:00:00 BRT 2024;Alta;JAVA;DONE
+Trilha Git;Finalizar a trilha de Git;Mon Aug 12 00:00:00 BRT 2024;Media;GIT;DONE
