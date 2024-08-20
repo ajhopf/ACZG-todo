@@ -11,25 +11,22 @@ public class TelaInicial {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            try {
-                gerarMenuInicial();
 
-                int opcaoSelecionada = MyUtils.getIntInput(0, 2, "Selecione a opção desejada: ", sc);
+            gerarMenuInicial();
 
-                switch (opcaoSelecionada) {
-                    case 0:
-                        System.out.println("Até logo!");
-                        return;
-                    case 1:
-                        ListarTarefas.listarTarefas(sc);
-                        break;
-                    case 2:
-                        AdicionarTarefas.adicionarTarefa(sc);
-                        break;
-                    default: System.out.println("Você escolheu a opção " + opcaoSelecionada);
-                }
-            } catch (Exception e) {
-                MyUtils.printError(e.toString());
+            int opcaoSelecionada = MyUtils.getIntInput(0, 2, "Selecione a opção desejada: ", sc);
+
+            switch (opcaoSelecionada) {
+                case 0:
+                    System.out.println("Até logo!");
+                    return;
+                case 1:
+                    ListarTarefas.listarTarefas(sc);
+                    break;
+                case 2:
+                    AdicionarTarefas.adicionarTarefa(sc);
+                    break;
+                default: System.out.println("Você escolheu a opção " + opcaoSelecionada);
             }
         }
 
