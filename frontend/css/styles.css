@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #b5c0b2;
+    height: 100vh;
+}
+
+
+.main {
+    height: 95vh;
+    width: 95vw;
+    background-color: aqua;
+}
+
+.nav {
+    background-color: #b5c0b2;
+    opacity: 0.8;
+}
+
+.middle {
+    background-color: bisque;
+}

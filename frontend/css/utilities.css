@@ -1,0 +1,15 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.rounded-border {
+    border: black solid 0px;
+    border-radius: 20px;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
