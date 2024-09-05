@@ -1,6 +1,6 @@
 import { renderTodosList, todos } from "../todos.js";
 
-const prioridade = [
+const prioridades = [
   {value: '1', text: 'Muito baixa'},
   {value: '2', text: 'Baixa'},
   {value: '3', text: 'Média'},
@@ -8,12 +8,16 @@ const prioridade = [
   {value: '5', text: 'Muito Alta'},
 ]
 
+const getPrioridadeText = (valueString) => {
+  return prioridades.find(prioridade => prioridade.value === valueString).text;
+}
+
 const updatePrioridade = () => {
   const prioridadeNavList = document.getElementById("prioridade-nav-list");
 
   prioridadeNavList.innerHTML = '';
 
-  prioridade.forEach(prioridade => {
+  prioridades.forEach(prioridade => {
     const todosFiltered = todos.filter(todo => todo.prioridade === prioridade.value.toString())
 
     prioridadeNavList.innerHTML += `
@@ -40,4 +44,4 @@ const addEventListenerToPrioridadeList = () => {
   });
 }
 
-export {updatePrioridade, addEventListenerToPrioridadeList};
+export {updatePrioridade, getPrioridadeText, addEventListenerToPrioridadeList};

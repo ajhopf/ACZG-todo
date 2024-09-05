@@ -1,14 +1,14 @@
 import { updateCategories } from "./filters/categories.js";
 import { populateForm, resetForm } from "../form/form.js";
-import { updatePrioridade } from "./filters/priorities.js";
+import { getPrioridadeText, updatePrioridade } from "./filters/priorities.js";
 import { updateStatus } from "./filters/status.js";
 
 const todos = [
   {
-    id: 0, titulo: 'Título', descricao: 'Finalizar site', data: '2024-09-05', prioridade: '1', status: 'TODO', categoria: 'ACZG'
+    id: 0, titulo: 'Finalizar TODO List', descricao: 'Finalizar desafio do todo list', data: '2024-09-05', prioridade: '5', status: 'DOING', categoria: 'ACZG'
   },
   {
-    id: 1, titulo: 'Finalizar TODOS', descricao: 'Essa descrição é maneira', data: '2024-09-05', prioridade: '3', status: 'TODO', categoria: 'Pessoal'
+    id: 1, titulo: 'Dar banho nos cachorros', descricao: 'Já passou da hora', data: '2024-09-07', prioridade: '2', status: 'TODO', categoria: 'Pessoal'
   }
 ];
 
@@ -17,9 +17,9 @@ const selectTodo = (id) => {
   const selectedTodo = todos.find(todo => todo.id === parseInt(id));
 
   const todoForm = document.getElementById('todo-form');
-  document.getElementById("salvar-todo").innerText = "Editar"
   todoForm.setAttribute("data-is-editing", true);
   todoForm.setAttribute("data-todo-id", id);
+  document.getElementById("salvar-todo").innerText = "Editar"
   document.getElementById("delete-todo").classList.remove("hidden");
 
   populateForm(selectedTodo);
@@ -35,7 +35,7 @@ const renderTodoItem = (todo) => {
             </div>
             <p class="margin">Descrição: ${todo.descricao}</p>
             <div class="todo-card-footer flex justify-around">
-                <p>Prioridade: ${todo.prioridade}</p>
+                <p>Prioridade: ${getPrioridadeText(todo.prioridade)}</p>
                 <p>Data: ${new Date(todo.data).toLocaleDateString('pr-br',{ timeZone: 'UTC' })}</p>
                 <p>Status: ${todo.status}</p>
             </div>

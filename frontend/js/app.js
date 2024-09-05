@@ -9,16 +9,20 @@ const initApp = () => {
 
   const newTodoForm = document.getElementById("todo-form");
   newTodoForm.addEventListener("submit", submitTodo);
+
   const cancelForm = document.getElementById("cancelar-todo-form");
   cancelForm.addEventListener("click", resetForm.bind(null, newTodoForm))
+
   const deleteBtn = document.getElementById("delete-todo");
   deleteBtn.addEventListener("click", deleteTodo);
+
+  const showAllBtn = document.getElementById("show-all-btn");
+  showAllBtn.addEventListener("click", renderTodosList.bind(null, null, null, null));
 
   addEventListenerToCategoriaList();
   addEventListenerToTodoList();
   addEventListenerToPrioridadeList();
   addEventListenerToStatusList();
-  document.getElementById("show-all-btn").addEventListener("click", renderTodosList.bind(null, null, null, null));
 
   renderTodosList();
   updateCategories();

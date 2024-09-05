@@ -16,24 +16,30 @@
     <main class="main flex-grow rounded-border margin grid-container">
         <nav class="nav">
             <h2 class="nav-title">Filtros</h2>
+
             <div class="flex flex-center">
                 <button class="cancel-btn full-width margin" id="show-all-btn">Mostrar Todas Tarefas</button>
             </div>
+
             <h3 class="nav-title">Categorias</h3>
             <ul id="categorias-nav-list">
             </ul>
+
             <h3 class="nav-title">Prioridade</h3>
             <ul id="prioridade-nav-list"></ul>
+
             <h3 class="nav-title">Status</h3>
             <ul id="status-nav-list"></ul>
         </nav>
+
         <section class="middle">
             <div id="todo-list">
-
             </div>
         </section>
+
         <section class="side flex flex-col">
             <h1 id="todo-form-title" class="todo-form-title">Adicionar Todo</h1>
+
             <form id="todo-form" data-is-editing="false">
                 <div id="inputs-container">
                 </div>
@@ -43,9 +49,9 @@
                     <button class="save-btn" type="submit" id="salvar-todo">Salvar</button>
                 </div>
             </form>
+
         </section>
     </main>
-    <footer></footer>
     <script src="js/app.js" type="module"></script>
 </body>
 </html>
