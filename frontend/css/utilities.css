@@ -1,0 +1,57 @@
+.grid-container {
+    display: grid;
+}
+
+.rounded-border {
+    border: black solid 0px;
+    border-radius: 20px;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.flex-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.margin {
+    margin: 1rem;
+}
+
+.margin-right {
+    margin-right: 1rem;
+}
+
+.margin-bottom-2 {
+    margin-bottom: 2rem;
+}
+
+.hidden {
+    display: none;
+}

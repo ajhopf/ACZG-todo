@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #eaeaea;
+    min-height: 100vh;
+    font-family: "Roboto", sans-serif;
+}
+
+.main {
+    background-color: #d4ddd0;
+    grid-template-columns: 1fr 2fr 1fr;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.nav {
+    grid-column: 1;
+    background-color: #d4ddd0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.middle {
+    grid-column: 2;
+    background-color: #e3f1dd;
+}
+
+.side {
+    grid-column: 3;
+}

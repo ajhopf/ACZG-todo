@@ -1,0 +1,24 @@
+.nav-title {
+    margin: 1rem
+}
+
+#categorias-nav-list, #prioridade-nav-list, #status-nav-list {
+    padding: 0;
+}
+
+.categoria-item, .prioridade-item, .status-item{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0.5rem;
+}
+
+.categoria-item p, .prioridade-item p, .status-item p {
+    margin: 0.5rem;
+}
+
+.categoria-item:hover, .prioridade-item:hover, .status-item:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 1px;
+    border-radius: 20px;
+}

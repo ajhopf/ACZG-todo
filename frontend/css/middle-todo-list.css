@@ -1,0 +1,23 @@
+.todo-item {
+    list-style: none;
+}
+
+.todo-item:hover {
+    cursor: pointer;
+}
+
+.todo-card {
+    background-color: white;
+}
+
+.todo-card:hover {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.todo-card-footer {
+    position: relative;
+    background-color: #d4ddd0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
