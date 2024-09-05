@@ -36,6 +36,10 @@
     height: 100%;
 }
 
+.full-width {
+    width: 100%;
+}
+
 .margin {
     margin: 1rem;
 }
@@ -46,4 +50,8 @@
 
 .margin-bottom-2 {
     margin-bottom: 2rem;
+}
+
+.hidden {
+    display: none;
 }

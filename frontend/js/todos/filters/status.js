@@ -14,8 +14,6 @@ const updateStatus = () => {
   status.forEach(status => {
     const todosFiltered = todos.filter(todo => todo.status === status.value);
 
-    console.log(todosFiltered);
-
     statusNavList.innerHTML += `
       <li class="status-item">
         <p>${status.value}</p>
@@ -33,8 +31,6 @@ const addEventListenerToStatusList = () => {
 
     if (li) {
       const prioridade = li.firstElementChild.innerHTML;
-      console.log(prioridade);
-
       renderTodosList(null, null, prioridade);
     }
   });

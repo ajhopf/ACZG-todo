@@ -20,6 +20,7 @@ const selectTodo = (id) => {
   document.getElementById("salvar-todo").innerText = "Editar"
   todoForm.setAttribute("data-is-editing", true);
   todoForm.setAttribute("data-todo-id", id);
+  document.getElementById("delete-todo").classList.remove("hidden");
 
   populateForm(selectedTodo);
 }
@@ -35,7 +36,7 @@ const renderTodoItem = (todo) => {
             <p class="margin">Descrição: ${todo.descricao}</p>
             <div class="todo-card-footer flex justify-around">
                 <p>Prioridade: ${todo.prioridade}</p>
-                <p>Data: ${todo.data}</p>
+                <p>Data: ${new Date(todo.data).toLocaleDateString('pr-br',{ timeZone: 'UTC' })}</p>
                 <p>Status: ${todo.status}</p>
             </div>
         </div>                          
@@ -43,24 +44,33 @@ const renderTodoItem = (todo) => {
     `
 }
 
+const compareTodoDate = (a, b) => {
+  return new Date(a.data) - new Date(b.data);
+}
+
+const compareTodoPriority = (a, b) => {
+  return b.prioridade - a.prioridade;
+}
+
 const renderTodosList = (categoria, prioridade, status) => {
   const todoList = document.getElementById("todo-list");
+  console.log(todos);
 
   todoList.innerHTML = '';
 
+  let todosToRender = todos;
+
   if (categoria) {
-    const todosFiltered  = todos.filter(todo => todo.categoria === categoria);
-    todosFiltered.forEach(todo => todoList.innerHTML += `${renderTodoItem(todo)}`)
+    todosToRender = todosToRender.filter(todo => todo.categoria === categoria);
   } else if (prioridade) {
-    const todosFiltered = todos.filter(todo => todo.prioridade === prioridade);
-    todosFiltered.forEach(todo => todoList.innerHTML += `${renderTodoItem(todo)}`)
+    todosToRender = todosToRender.filter(todo => todo.prioridade === prioridade);
   } else if (status) {
-    const todosFiltered = todos.filter(todo => todo.status === status);
-    todosFiltered.forEach(todo => todoList.innerHTML += `${renderTodoItem(todo)}`)
-  } else {
-    todos.forEach(todo => todoList.innerHTML += `${renderTodoItem(todo)}`)
+    todosToRender = todosToRender.filter(todo => todo.status === status);
   }
 
+  todosToRender.sort(compareTodoDate);
+  todosToRender.sort(compareTodoPriority);
+  todosToRender.forEach(todo => todoList.innerHTML += `${renderTodoItem(todo)}`)
 }
 
 const addEventListenerToTodoList = () => {
@@ -76,6 +86,22 @@ const addEventListenerToTodoList = () => {
   });
 }
 
+const deleteTodo = () => {
+  const todoForm = document.getElementById("todo-form");
+
+  const todoId = todoForm.getAttribute("data-todo-id");
+
+  const todoIndex = todos.findIndex(todo => todo.id === parseInt(todoId));
+
+  console.log(todoIndex);
+
+  todos.splice(todoIndex, 1);
+
+  resetForm(todoForm);
+  resetStatus();
+}
+
+
 const submitTodo = (event) => {
   event.preventDefault();
 
@@ -84,23 +110,32 @@ const submitTodo = (event) => {
   const formData = new FormData(event.target);
   const formProps = Object.fromEntries(formData);
 
-  const id = todos.length;
+  let id = 0;
+
+  todos.forEach(todo => {
+    if (todo.id > id) {
+      id = todo.id + 1;
+    }
+  });
 
   if (isEditing === "true") {
     const id = parseInt(event.target.getAttribute("data-todo-id"));
     const index = todos.findIndex(todo => todo.id === id)
-    console.log(index)
+
     todos[index] = {id: id, ...formProps}
   } else {
     todos.push({id: id, ...formProps});
   }
 
   resetForm(event.target);
+  resetStatus();
+}
 
+const resetStatus = () => {
   updateCategories();
   updatePrioridade();
   updateStatus();
   renderTodosList();
 }
 
-export {renderTodosList, addEventListenerToTodoList, submitTodo, todos};
+export {renderTodosList, addEventListenerToTodoList, submitTodo, deleteTodo, todos};

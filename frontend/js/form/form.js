@@ -81,6 +81,7 @@ const resetForm = (form) => {
   form.reset();
   form.setAttribute("data-is-editing", "false");
   form.setAttribute("data-todo-id", null)
+  document.getElementById("delete-todo").classList.add("hidden");
   document.getElementById("todo-form-title").innerText = "Adicionar Todo";
   document.getElementById("salvar-todo").innerText = "Salvar"
 }

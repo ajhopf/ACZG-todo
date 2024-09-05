@@ -23,12 +23,17 @@ form {
     border-color: #b5c0b2;: ;
 }
 
+.delete-btn {
+    background-color: #bf6d67;
+    border-color: #bf6d67;
+}
+
 .cancel-btn {
     background-color: #e1c196;
     border-color: #e1c196;
 }
 
-.save-btn:hover, .cancel-btn:hover {
+.save-btn:hover, .cancel-btn:hover, .delete-btn:hover {
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     cursor: pointer;
 }
