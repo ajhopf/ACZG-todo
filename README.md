@@ -5,16 +5,74 @@
 ## Conteúdos:
 
 - [Introdução](#introdução)
-- [Executando o Sistema](#executando-o-sistema)
-- [Utilizando o Sistema](#utilizando-o-sistema)
-  - [Criando uma Tarefa](#criando-uma-tarefa)
-  - [Listando as Tarefas](#listando-as-tarefas)
-  - [Atualizando uma Tarefa](#atualizando-a-tarefa)
-  - [Deletando uma Tarefa](#deletando-uma-tarefa)
-  - [Estatísticas](#estatísticas)
+- [Frontend](#frontend)
+  - [Criar Tarefa](#criar-tarefa)
+  - [Filtragem de Tarefas](#filtrar-tarefas)
+  - [Deletar e Editar Tarefa](#deletar-e-editar-tarefa)
+- [Backend](#backend)
+  - [Executando o Sistema](#executando-o-sistema)
+  - [Utilizando o Sistema](#utilizando-o-sistema)
+    - [Criando uma Tarefa](#criando-uma-tarefa)
+    - [Listando as Tarefas](#listando-as-tarefas)
+    - [Atualizando uma Tarefa](#atualizando-a-tarefa)
+    - [Deletando uma Tarefa](#deletando-uma-tarefa)
+    - [Estatísticas](#estatísticas)
 
 ## Introdução
-Este projeto é uma releitura do clássico Todo List, desenvolvido utilizando Java.
+Este projeto é uma releitura do clássico Todo List, desenvolvido utilizando Java para o backend e vanilla Js para no frontend.
+
+## Frontend
+
+A todo list ganhou uma nova cara!
+
+Estamos no meio de um processo de evolução. A todo list agora possui interface gráfica!
+Embora ainda não seja possível salvar as suas tarefas, já é possível usufruir de uma interface linda e amigável.
+
+Ainda estamos em processo inicial de transformação deste projeto, algumas das melhorias futuras são:
+* Permitir salvar as tarefas no localstorage;
+* Comunicação com o backend;
+* Adicionar responsividade para permitir a visualização das tarefas em dispositivos menores.
+
+![img_3.png](img_3.png)
+
+### Criar Tarefa
+
+Para criar uma nova tarefa utilize o formulário que se encontra à direita da página.
+
+Todas os campos são necessários para permitir a criação de uma nova tarefa.
+
+Ao adicionar um novo 'todo', se você utilizar uma categoria que ainda não existe, essa categoria será criar irá aparecer no menu
+'Categorias'. Se essa categoria já existir, você perceberá que o número ao lado desta categoria irá ser acrescido de 1.
+
+Não é necessário deletar categorias. Quando uma categoria não tiver nenhuma tarefa associada a ela, ela será automaticamente deletada.
+
+### Filtrar Tarefas
+
+As tarefas são listadas por padrão seguindo a seguinte regra:
+
+1. Tarefas com prioridade maior são exibidas primeiro;
+2. Tarefas com a mesma prioridade são ordenadas pela sua data (datas mais próximas aparecem primeiro).
+
+Através dos menus da esquerda é possível também filtrar as suas tarefas por:
+  * Categoria;
+  * Nível de Prioridade;
+  * Status;
+
+Se você deseja visualizar todas as tarefas basta clicar em "mostrar todas tarefas".
+
+### Deletar e Editar Tarefa
+
+Ao clicar no card de uma tarefa, as informações dessa tarefa serão transpostas para o formulário e este irá entrar no modo 'edição'.
+Você pode confirmar isso ao se atentar a três itens:
+1. O nome do formulário muda de "Adicionar Todo" para "Editando Todo";
+2. Um novo botão ("Deletar") pode ser visualizado;
+3. O botão de "Salvar" agora possui o texto "Editar".
+
+Ao alterar os itens de uma tarefa e clicar em "Editar" essa tarefa será atualizada!
+Se você clicar em cancelar, nada será feito e o formulário irá retornar ao seu padrão ("Adicionar Tarefa")
+Por fim, se você clicar em "Deletar" a tarefa será deletada.
+
+## Backend
 
 ## Executando o Sistema
 
