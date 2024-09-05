@@ -4,16 +4,31 @@
     <meta charset="UTF-8">
     <title>ACZG - Todo</title>
     <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/new-todo-form.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="flex-center">
-    <main class="main rounded-border grid-container">
+<body class="flex flex-center">
+    <main class="main flex-grow rounded-border margin grid-container">
         <nav class="nav">
-            <h2>Menu</h2>
+            <h2 class="todo-form-title">Menu</h2>
+            <h3 class="todo-form-title">Categorias</h3>
+            <ul id="categorias-nav-list"></ul>
         </nav>
         <section class="middle">
+            <div id="todo-list">
+
+            </div>
         </section>
-        <section class="side">
+        <section class="side flex flex-col">
+            <h1 id="todo-form-title" class="todo-form-title">Adicionar Todo</h1>
+            <form id="todo-form" data-is-editing="false">
+                <div id="inputs-container">
+                </div>
+                <div class="form-section flex">
+                    <button type="button" id="cancelar-todo-form">Cancelar</button>
+                    <button type="submit" id="salvar-todo">Salvar</button>
+                </div>
+            </form>
         </section>
     </main>
     <footer></footer>

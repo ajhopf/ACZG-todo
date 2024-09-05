@@ -1,6 +1,5 @@
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
 }
 
 .rounded-border {
@@ -8,8 +7,44 @@
     border-radius: 20px;
 }
 
-.flex-center {
+.flex {
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
+
+.flex-col {
+    flex-direction: column;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.flex-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.margin-bottom-2 {
+    margin-bottom: 2rem;
+}
+
+.margin {
+    margin: 1rem;
+}
+
+.margin-right {
+    margin-right: 1rem;
+}
+
