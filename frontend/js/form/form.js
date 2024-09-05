@@ -8,11 +8,11 @@ const inputs = [
     id: 'prioridade',
     type: 'select',
     options: [
-      {value: 1, title: "Muito Baixa"},
-      {value: 2, title: "Baixa"},
-      {value: 3, title: "Média"},
-      {value: 4, title: "Alta"},
-      {value: 5, title: "Muito Alta"}
+      {value: '1', title: "Muito Baixa"},
+      {value: '2', title: "Baixa"},
+      {value: '3', title: "Média"},
+      {value: '4', title: "Alta"},
+      {value: '5', title: "Muito Alta"}
     ]
   },
   {
@@ -57,6 +57,26 @@ const setCurrentDay = () => {
   }
 }
 
+const populateForm = (todo) => {
+  const formTitle = document.getElementById("todo-form-title");
+
+  formTitle.innerText = "Editando Todo"
+
+  const titulo = document.querySelector('#titulo');
+  const descricao = document.querySelector('#descricao');
+  const data = document.querySelector('#data');
+  const prioridade = document.querySelector('#prioridade');
+  const status = document.querySelector('#status');
+  const categoria = document.querySelector('#categoria');
+
+  titulo.value = todo.titulo;
+  descricao.value = todo.descricao;
+  data.value = todo.data;
+  prioridade.value = todo.prioridade;
+  status.value = todo.status;
+  categoria.value = todo.categoria;
+};
+
 const resetForm = (form) => {
   form.reset();
   form.setAttribute("data-is-editing", "false");
@@ -79,4 +99,4 @@ const buildForm = () => {
   setCurrentDay();
 }
 
-export { buildForm, resetForm };
+export { buildForm, resetForm, populateForm };

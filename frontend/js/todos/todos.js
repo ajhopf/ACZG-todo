@@ -1,36 +1,20 @@
-import { atualizarCategorias } from "./categories/categories.js";
-import { resetForm } from "../form/form.js";
+import { updateCategories } from "./filters/categories.js";
+import { populateForm, resetForm } from "../form/form.js";
+import { updatePrioridade } from "./filters/priorities.js";
+import { updateStatus } from "./filters/status.js";
 
-const todos = [{
-  id: 0, titulo: 'Título', descricao: 'Finalizar site', data: '2024-09-05', prioridade: '1', status: 'TODO', categoria: 'ACZG'
-}];
+const todos = [
+  {
+    id: 0, titulo: 'Título', descricao: 'Finalizar site', data: '2024-09-05', prioridade: '1', status: 'TODO', categoria: 'ACZG'
+  },
+  {
+    id: 1, titulo: 'Finalizar TODOS', descricao: 'Essa descrição é maneira', data: '2024-09-05', prioridade: '3', status: 'TODO', categoria: 'Pessoal'
+  }
+];
 
 
 const selectTodo = (id) => {
   const selectedTodo = todos.find(todo => todo.id === parseInt(id));
-
-  console.log(id);
-  console.log(selectedTodo);
-
-  const populateForm = (todo) => {
-    const formTitle = document.getElementById("todo-form-title");
-
-    formTitle.innerText = "Editando Todo"
-
-    const titulo = document.querySelector('#titulo');
-    const descricao = document.querySelector('#descricao');
-    const data = document.querySelector('#data');
-    const prioridade = document.querySelector('#prioridade');
-    const status = document.querySelector('#status');
-    const categoria = document.querySelector('#categoria');
-
-    titulo.value = todo.titulo;
-    descricao.value = todo.descricao;
-    data.value = todo.data;
-    prioridade.value = todo.prioridade;
-    status.value = todo.status;
-    categoria.value = todo.categoria;
-  };
 
   const todoForm = document.getElementById('todo-form');
   document.getElementById("salvar-todo").innerText = "Editar"
@@ -59,12 +43,24 @@ const renderTodoItem = (todo) => {
     `
 }
 
-const renderTodosList = () => {
+const renderTodosList = (categoria, prioridade, status) => {
   const todoList = document.getElementById("todo-list");
 
   todoList.innerHTML = '';
 
-  todos.forEach(todo => todoList.innerHTML += `${renderTodoItem(todo)}`)
+  if (categoria) {
+    const todosFiltered  = todos.filter(todo => todo.categoria === categoria);
+    todosFiltered.forEach(todo => todoList.innerHTML += `${renderTodoItem(todo)}`)
+  } else if (prioridade) {
+    const todosFiltered = todos.filter(todo => todo.prioridade === prioridade);
+    todosFiltered.forEach(todo => todoList.innerHTML += `${renderTodoItem(todo)}`)
+  } else if (status) {
+    const todosFiltered = todos.filter(todo => todo.status === status);
+    todosFiltered.forEach(todo => todoList.innerHTML += `${renderTodoItem(todo)}`)
+  } else {
+    todos.forEach(todo => todoList.innerHTML += `${renderTodoItem(todo)}`)
+  }
+
 }
 
 const addEventListenerToTodoList = () => {
@@ -101,7 +97,9 @@ const submitTodo = (event) => {
 
   resetForm(event.target);
 
-  atualizarCategorias();
+  updateCategories();
+  updatePrioridade();
+  updateStatus();
   renderTodosList();
 }
 

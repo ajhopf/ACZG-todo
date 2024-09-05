@@ -1,0 +1,35 @@
+form {
+    margin: 2rem 0
+}
+
+.form-section {
+    display: grid;
+    margin: 1rem;
+}
+
+#todo-form input, select, button {
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    margin-top:0.25rem;
+}
+
+.todo-form-title {
+    margin-left: 2rem;
+    text-align: center;
+}
+
+.save-btn {
+    background-color: #b5c0b2;
+    border-color: #b5c0b2;: ;
+}
+
+.cancel-btn {
+    background-color: #e1c196;
+    border-color: #e1c196;
+}
+
+.save-btn:hover, .cancel-btn:hover {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+

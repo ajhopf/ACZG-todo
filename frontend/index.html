@@ -3,16 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>ACZG - Todo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/utilities.css">
-    <link rel="stylesheet" href="css/new-todo-form.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/middle-todo-list.css">
+    <link rel="stylesheet" href="css/side-todo-form.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="flex flex-center">
     <main class="main flex-grow rounded-border margin grid-container">
         <nav class="nav">
-            <h2 class="todo-form-title">Menu</h2>
-            <h3 class="todo-form-title">Categorias</h3>
-            <ul id="categorias-nav-list"></ul>
+            <h2 class="nav-title">Filtros</h2>
+            <div class="flex flex-center">
+                <button class="cancel-btn" id="show-all-btn">Mostrar Todas Tarefas</button>
+            </div>
+            <h3 class="nav-title">Categorias</h3>
+            <ul id="categorias-nav-list">
+            </ul>
+            <h3 class="nav-title">Prioridade</h3>
+            <ul id="prioridade-nav-list"></ul>
+            <h3 class="nav-title">Status</h3>
+            <ul id="status-nav-list"></ul>
         </nav>
         <section class="middle">
             <div id="todo-list">
@@ -25,8 +38,8 @@
                 <div id="inputs-container">
                 </div>
                 <div class="form-section flex">
-                    <button type="button" id="cancelar-todo-form">Cancelar</button>
-                    <button type="submit" id="salvar-todo">Salvar</button>
+                    <button class="cancel-btn" type="button" id="cancelar-todo-form">Cancelar</button>
+                    <button class="save-btn" type="submit" id="salvar-todo">Salvar</button>
                 </div>
             </form>
         </section>

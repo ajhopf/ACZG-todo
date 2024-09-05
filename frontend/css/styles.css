@@ -1,14 +1,15 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #b5c0b2;
+    background: #eaeaea;
     min-height: 100vh;
+    font-family: "Roboto", sans-serif;
 }
 
-
 .main {
-    background-color: #e3d6d6;
+    background-color: #d4ddd0;
     grid-template-columns: 1fr 2fr 1fr;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .nav {
@@ -20,26 +21,7 @@ body {
 
 .middle {
     grid-column: 2;
-    background-color: bisque;
-}
-
-.todo-item {
-    list-style: none;
-}
-
-.todo-item:hover {
-    cursor: pointer;
-}
-
-.todo-card {
-    background-color: white;
-}
-
-.todo-card-footer {
-    position: relative;
-    background-color: #d4ddd0;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    background-color: #e3f1dd;
 }
 
 .side {
