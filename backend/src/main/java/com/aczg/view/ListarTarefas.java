@@ -7,8 +7,10 @@ import com.aczg.service.CategoriaService;
 import com.aczg.service.TarefaService;
 import com.aczg.utils.InputUtils;
 
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 
