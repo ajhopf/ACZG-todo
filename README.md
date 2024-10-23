@@ -1,6 +1,6 @@
 # TODO List
 
-
+Criado por André Jaques Hopf
 
 ## Conteúdos:
 
@@ -74,6 +74,10 @@ Por fim, se você clicar em "Deletar" a tarefa será deletada.
 
 ## Backend
 
+O backend agora está utilizando o Gradle para manejar as dependências e fazer o build do app.
+
+Todo o código fonte do backend foi transferido para a pasta 'backend' na raíz do projeto, dessa maneira aumentando a organização e modularização do projeto.
+
 ## Executando o Sistema
 
 Para executar este sistema você deve ter o Java instalado na sua máquina, ou abri-lo utilizando uma IDE com o JVM integrado.
@@ -97,6 +101,19 @@ Se você deseja iniciar o sistema sem nenhuma tarefa cadastrada simplesmente del
 O único código realmente necessário da classe Main é:
 
 Para iniciar o sistema, execute o método main.
+
+Além disso, você pode usar a linha de comando para executar o sistema.
+
+Com seu terminal aberto na pasta 'backend' utilize o comando:
+
+```bash
+  #linux
+  ./gradlew run     
+  
+  #windows
+  gradle run  
+ 
+```
 
 ## Utilizando o Sistema
 
