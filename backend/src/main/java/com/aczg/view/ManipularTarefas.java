@@ -4,13 +4,10 @@ import com.aczg.model.Categoria;
 import com.aczg.model.Tarefa;
 import com.aczg.model.enums.Prioridade;
 import com.aczg.model.enums.Status;
-import com.aczg.service.CategoriaService;
 import com.aczg.service.TarefaService;
 import com.aczg.utils.InputUtils;
 import com.aczg.utils.MyUtils;
-import jdk.internal.util.xml.impl.Input;
 
-import java.text.ParseException;
 import java.util.*;
 
 public class ManipularTarefas {

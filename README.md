@@ -33,7 +33,7 @@ Ainda estamos em processo inicial de transformação deste projeto, algumas das 
 * Comunicação com o backend;
 * Adicionar responsividade para permitir a visualização das tarefas em dispositivos menores.
 
-![img_3.png](img_3.png)
+![img_3.png](assets/readme/img_3.png)
 
 ### Criar Tarefa
 
@@ -102,7 +102,7 @@ Para iniciar o sistema, execute o método main.
 
 A navegação do sitema é feita através dos números das opções que são mostradas em cada menu.
 
-![img.png](img.png)
+![img.png](assets/readme/img.png)
 
 Não é possível criar diretamente uma categoria. Categorias são criadas automaticamente quando inserimos novas tarefas no sistema com uma categoria atrelada que ainda não existe.
 
@@ -133,7 +133,7 @@ As tarefas são sempre listadas de forma que as tarefas com maior prioridade apa
 
 Além disso são fornecidas diversas opções de listagem como:
 
-![img_1.png](img_1.png)
+![img_1.png](assets/readme/img_1.png)
 
 * Escolha de data:
   * Na opção 1 - Listar Todas Tarefas - é possível escolher filtrar as tarefas com base na data de término;
@@ -182,4 +182,4 @@ Quando for possível deletar uma categoria, uma mensagem de sucesso será impres
 
 Por fim, através da opção 6  do menu inicial você poderá ver uma estatística de quantas tarefas existem atualmente cadastradas para cada status possível (TODO, DOING e DONE).
 
-![img_2.png](img_2.png)
+![img_2.png](assets/readme/img_2.png)
